@@ -1,5 +1,5 @@
 # dpfilter
-### BugBounty , sort and delete duplicates param value without missing original value
+### BugBounty , sort and delete duplicates param value without missing original value replace qsreplace tool
 
 ## Usage
 ```bash
