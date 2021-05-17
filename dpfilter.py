@@ -4,7 +4,6 @@
 # Github: github.com/Abdulrahman-Kamel
 
 import re
-import argparse
 from sys import argv,stdin,modules
 
 class checkEntiries():
