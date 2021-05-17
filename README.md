@@ -3,8 +3,8 @@
 
 ## Usage
 ```bash
-chmod +x dpfilter.py && sudo mv dpfilter.py /usr/bin/dpfilter <br>
-cat urls.txt | dpfilter <br>
+chmod +x dpfilter.py && sudo mv dpfilter.py /usr/bin/dpfilter
+cat urls.txt | dpfilter
 ```
 OR
 ```bash
