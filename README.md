@@ -2,9 +2,14 @@
 ### BugBounty , sort and delete duplicates param value without missing original value
 
 ## Usage
+```bash
 chmod +x dpfilter.py && sudo mv dpfilter.py /usr/bin/dpfilter <br>
 cat urls.txt | dpfilter <br>
-or => python3 dpfilter.py urls.txt 
+```
+OR
+```bash
+python3 dpfilter.py urls.txt 
+```
 
 # Description
 ```bash
