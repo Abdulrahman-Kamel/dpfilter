@@ -4,15 +4,11 @@
 # Github: github.com/Abdulrahman-Kamel
 
 import re
-from sys import argv,stdin,modules
+from sys import argv,stdin
 
 class checkEntiries():
 	def __init__(self):
-		from sys import modules
-		if 'argv' not in modules:		
-			from sys import argv
-		if 'stdin' not in modules:
-			from sys import stdin
+		pass
 
 	def readStdin(self):
 		data = []
@@ -20,35 +16,33 @@ class checkEntiries():
 			for line in stdin:
 				data.append(line.strip())
 		return data
-
+# 
 	def readArgv(self, Position):
 		data = []
-		if len(argv) > 1:
-			for line in open(argv[int(Position)], 'r'):
-				data.append(line.strip())
+		for line in open(argv[int(Position)], 'r'):
+			data.append(line.strip())
 		open(argv[int(Position)], 'r').close()
 		return data
 
 
 class dataFilter():
 	def __init__(self):
-		self.regex_url = "^(http|https):\/\/.*.*\/(.*)"
-		self.regex_url_param = "^(http|https).*\=.*"
-	
+		pass
+
 	def url(self, line):
-		Match = re.match(self.regex_url, line)
+		regex_url = "^(http|https):\/\/.*.*\/(.*)"
+		Match = re.match(regex_url, line)
 		return bool(Match)
 	
 	def url_param(self, line):
-		Match = re.match(self.regex_url_param, line)
+		regex_url_param = "^(http|https).*\=.*"
+		Match = re.match(regex_url_param, line)
 		return bool(Match)
 
 
 class main():
 	def __init__(self):
-		self.paramValueRegex = '=[a-z9A-Z0-9!@#$%^*()-`,\\//+:=._-]*'
 		self.data = checkEntiries
-		
 		urls = self.GetUrls()
 		self.save_with_id(self.urls)
 		self.urls_with_id_2 = self.urls_with_id.copy()
@@ -74,8 +68,9 @@ class main():
 			ID +=1
 
 	def change_param_value(self):
+		paramValueRegex = '=[a-z9A-Z0-9!@#$%^*()-`,\\//+:=._-]*'
 		for key, value in self.urls_with_id_2.items():
-			self.urls_with_id_2[key] = re.sub(self.paramValueRegex,str('='+'FUZZ00'),self.urls_with_id_2[key])
+			self.urls_with_id_2[key] = re.sub(paramValueRegex,str('='+'FUZZ00'),self.urls_with_id_2[key])
 
 	def remove_duplicate(self):
 		tmp = [] 
@@ -103,8 +98,8 @@ class main():
 # static variables
 checkEntiries = checkEntiries()
 dataFilter 	  = dataFilter()
-checkEntiries = checkEntiries.readStdin() + argv
 argv 		  = checkEntiries.readArgv(1) if len(argv) > 1 else []
+checkEntiries = checkEntiries.readStdin() + argv
 
 
 if __name__ == '__main__':
